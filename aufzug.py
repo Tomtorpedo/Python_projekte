@@ -30,8 +30,10 @@ aufzeichnungen = [
     3, 2, 1, -1, 6, 6, -2, -5, -1, -5, -4, 1, 1, -1, 6, -2, -5, -2, 7, 8, -4,
     -1, -1, 1, -4, 2, -3, -3, 2, 2, 1, -2, -2
 ]
+#Aufgabe 1
 #print("Sie haben",len(aufzeichnungen),"Aufzeichnungen.")
 
+#Aufgabe 2
 """
 stockwerk = 0
 for i in aufzeichnungen:
@@ -39,8 +41,7 @@ for i in aufzeichnungen:
     print(stockwerk)
 print("Sie sind im ", stockwerk, ". Stockwerk.")
 """
-
-
+#Aufgabe 3
 """
 eine_tiefer = 0
 for i in aufzeichnungen:
@@ -48,7 +49,7 @@ for i in aufzeichnungen:
         eine_tiefer += 1
 print("Sie sind", eine_tiefer, "-mal eine Etage tiefer gefahren.")
 """
-
+#Aufgabe 4
 """
 min_höhe=0
 max_höhe = 0
@@ -61,7 +62,7 @@ for i in aufzeichnungen:
         min_höhe=stockwerk
 print(max_höhe-min_höhe+1) #hier wird 1 dazu addiert, um das erdgeschoss inzuberechnen 
 """
-
+#Aufgabe 5
 """
 r=0
 for i in aufzeichnungen:
@@ -69,6 +70,7 @@ for i in aufzeichnungen:
         r=i
 print(r)
 """
+#Aufgabe 6
 """
 stockwerk = 0
 for i in aufzeichnungen:
@@ -76,7 +78,7 @@ for i in aufzeichnungen:
 stockwerk=stockwerk/len(aufzeichnungen)
 print(stockwerk)
 """
-
+#Aufgabe 7
 """
 stockwerk = 0
 for i in aufzeichnungen:
@@ -84,6 +86,7 @@ for i in aufzeichnungen:
 höhe=stockwerk*3
 print(höhe)
 """
+#Aufgabe 8
 """
 stockwerk = 0
 erdgeschoss =0
@@ -93,7 +96,7 @@ for i in aufzeichnungen:
         erdgeschoss +=1
 print(erdgeschoss)
 """
-
+#Aufgabe 9
 """
 temp_travel,max_travel,ntemp_travel,nmax_travel=0,0,0,0
 
@@ -119,14 +122,37 @@ if max_travel>nmax_travel:
 else:
     print(nmax_travel)
 """
-
+#Aufgabe 10
+"""
+stockwerk,stock,max_stop = 0,[],[]
+for i in aufzeichnungen:
+    stockwerk += i
+    stock.append(stockwerk) #in der liste "stock" sind alle besuchten stockwerke aufgeführt
+for l in stock:
+    max_stop.append(stock.count(l)) #in der liste "max_stop" ist aufgeführt, wie oft sie da waren
+print("der meist besuchte Stock ist:",stock[max_stop.index(max(max_stop))]) #der code an dieser stelle ist trivial und erfordert keine weitere erklärung
+print("Sie waren dort",max(max_stop),"-mal")
+"""
+#Aufgabe 11
+"""
 stockwerk = 0
-stock=[]
-max_stop=[]
+vorher=0
+r=0
+for i in aufzeichnungen:
+    stockwerk = stockwerk + i
+    if stockwerk*vorher<0:
+        r+=1
+    vorher=stockwerk
+print("sie haben ",r,"-mal das stockwerk geändert")
+"""
+#Aufgabe 12
+"""
+stockwerk,stock,nicht_gehalten = 0,[],0
 for i in aufzeichnungen:
     stockwerk += i
     stock.append(stockwerk)
-for l in stock:
-    max_stop.append(stock.count(l))
-print(stock[max_stop.index(max(max_stop))]) #der code an dieser stelle ist trivial und erfordert keiner weitern erklärung
-print(max(max_stop))
+for l in range((min(stock)),(max(stock))):
+    if stock.count(l)==0:
+        nicht_gehalten+=1
+print(nicht_gehalten,"-mal wurde ein Stockwerk übersprungen")
+"""
