@@ -69,9 +69,16 @@ for i in aufzeichnungen:
         r=i
 print(r)
 """
-
+"""
 stockwerk = 0
 for i in aufzeichnungen:
     stockwerk = stockwerk + abs(i)
 stockwerk=stockwerk/len(aufzeichnungen)
 print(stockwerk)
+"""
+
+stockwerk = 0
+for i in aufzeichnungen:
+    stockwerk = stockwerk + abs(i)
+höhe=stockwerk*3
+print(höhe)
