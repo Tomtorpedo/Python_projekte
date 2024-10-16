@@ -36,8 +36,10 @@ aufzeichnungen = [
 stockwerk = 0
 for i in aufzeichnungen:
     stockwerk = stockwerk + i
+    print(stockwerk)
 print("Sie sind im ", stockwerk, ". Stockwerk.")
 """
+
 
 """
 eine_tiefer = 0
@@ -46,10 +48,30 @@ for i in aufzeichnungen:
         eine_tiefer += 1
 print("Sie sind", eine_tiefer, "-mal eine Etage tiefer gefahren.")
 """
+
+"""
+min_höhe=0
 max_höhe = 0
 stockwerk=0
 for i in aufzeichnungen:
-    stockwerk = stockwerk + i
-    if i>0:
-        stockwerk=max_höhe
-        print(stockwerk)
+    stockwerk += i
+    if stockwerk >= max_höhe:
+        max_höhe=stockwerk
+    if stockwerk <= min_höhe:
+        min_höhe=stockwerk
+print(max_höhe-min_höhe+1) #hier wird 1 dazu addiert, um das erdgeschoss inzuberechnen 
+"""
+
+"""
+r=0
+for i in aufzeichnungen:
+    if r<abs(i):
+        r=i
+print(r)
+"""
+
+stockwerk = 0
+for i in aufzeichnungen:
+    stockwerk = stockwerk + abs(i)
+stockwerk=stockwerk/len(aufzeichnungen)
+print(stockwerk)
