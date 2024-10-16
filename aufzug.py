@@ -30,8 +30,26 @@ aufzeichnungen = [
     3, 2, 1, -1, 6, 6, -2, -5, -1, -5, -4, 1, 1, -1, 6, -2, -5, -2, 7, 8, -4,
     -1, -1, 1, -4, 2, -3, -3, 2, 2, 1, -2, -2
 ]
-print("Sie haben",len(aufzeichnungen),"Aufzeichnungen.")
+#print("Sie haben",len(aufzeichnungen),"Aufzeichnungen.")
+
+"""
 stockwerk = 0
 for i in aufzeichnungen:
     stockwerk = stockwerk + i
 print("Sie sind im ", stockwerk, ". Stockwerk.")
+"""
+
+"""
+eine_tiefer = 0
+for i in aufzeichnungen:
+    if -1 == i:
+        eine_tiefer += 1
+print("Sie sind", eine_tiefer, "-mal eine Etage tiefer gefahren.")
+"""
+max_höhe = 0
+stockwerk=0
+for i in aufzeichnungen:
+    stockwerk = stockwerk + i
+    if i>0:
+        stockwerk=max_höhe
+        print(stockwerk)
