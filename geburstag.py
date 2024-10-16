@@ -84,10 +84,9 @@ print(r)
 monat=[]
 max=0
 for i in geburtstage:
-    monat.append(i[1])
+    monat.append(i[1])  #alle monatewerden aus der geburtstagsliste in die monatsliste kopiert
 for l in monat:
     if monat.count(l)>max:
         max = monat.count(l)
         max_monat=l
-print(max_monat)
-print(max)
+print("der",max_monat,". monat kommt",max,"-mal vor.")
