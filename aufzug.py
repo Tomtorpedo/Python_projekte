@@ -77,8 +77,56 @@ stockwerk=stockwerk/len(aufzeichnungen)
 print(stockwerk)
 """
 
+"""
 stockwerk = 0
 for i in aufzeichnungen:
     stockwerk = stockwerk + abs(i)
 höhe=stockwerk*3
 print(höhe)
+"""
+"""
+stockwerk = 0
+erdgeschoss =0
+for i in aufzeichnungen:
+    stockwerk = stockwerk + i
+    if stockwerk == 0:
+        erdgeschoss +=1
+print(erdgeschoss)
+"""
+
+"""
+temp_travel,max_travel,ntemp_travel,nmax_travel=0,0,0,0
+
+
+for i in aufzeichnungen:
+    if i>0 :
+        temp_travel+=i
+    else:
+        temp_travel=0
+    if temp_travel>max_travel:
+        max_travel=temp_travel
+
+for i in aufzeichnungen:
+    if i<0 :
+        ntemp_travel+=abs(i)
+    else:
+        ntemp_travel=0
+    if ntemp_travel>nmax_travel:
+        nmax_travel=ntemp_travel
+
+if max_travel>nmax_travel:
+    print(max_travel)
+else:
+    print(nmax_travel)
+"""
+
+stockwerk = 0
+stock=[]
+max_stop=[]
+for i in aufzeichnungen:
+    stockwerk += i
+    stock.append(stockwerk)
+for l in stock:
+    max_stop.append(stock.count(l))
+print(stock[max_stop.index(max(max_stop))]) #der code an dieser stelle ist trivial und erfordert keiner weitern erklärung
+print(max(max_stop))
