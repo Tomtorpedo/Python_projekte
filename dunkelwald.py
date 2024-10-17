@@ -56,11 +56,10 @@ for i in vektoren_y:
     ry=ry+i
     koordinaten_y.append(ry)
 
-besuchte_koordinaten_x=[]
-besuchte_koordinaten_y=[]
+
 for i in range(len(chars)+1):
-    if koordinaten_x.count(koordinaten_x[i])>1 and koordinaten_y.count(koordinaten_y[i])>1 and koordinaten_x[i] not in besuchte_koordinaten_x and koordinaten_y[i] not in besuchte_koordinaten_y:
-        print("sie sind schonmal an den koordinaten", koordinaten_x[i],"|",koordinaten_y[i],"gewesen.")
+    if koordinaten_x.count(koordinaten_x[i])>1 and koordinaten_y.count(koordinaten_y[i])>1 
+        #print("sie sind schonmal an den koordinaten", koordinaten_x[i],"|",koordinaten_y[i],"gewesen.")
         is_shortest_path=False
-        besuchte_koordinaten_x=koordinaten_x[i]
-        besuchte_koordinaten_y=koordinaten_y[i]
+if is_shortest_path==False:
+    print("es gibt einen kürzeren weg!")
