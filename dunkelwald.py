@@ -43,10 +43,12 @@ def geht_schneller_zurück(string):
             vektoren.append((0,-1))
         elif i=="<":
             vektoren.append((-1,0))
+    
+    
     koordinaten=[(0,0)]
     kx = 0
     ky= 0
-    for i in vektoren:
+    for i in vektoren:          # durch die vektoren werden nun die punkte in das koordinatensystem eingetragen
         kx += i[0]
         ky += i[1]
         koordinaten.append((kx,ky))
@@ -54,38 +56,19 @@ def geht_schneller_zurück(string):
     
     #hier wird nun gezählt, wie oft und an welcher stelle eine koordinate auftaucht
     #alles was sich zwischen zwei koordinaten befindet, die zwei mal auftauchen, wird gelöscht, da es sich dann um einen umweg handelt
+    #die laufzeit verdoppelt sich hier und ist somit immer noch linear
     r=0
     besuchte_koordinaten=[]
     for i in koordinaten:
         if i in besuchte_koordinaten:
             punkt_ab_doppelung=besuchte_koordinaten.index(i)
             del besuchte_koordinaten[(punkt_ab_doppelung+1):(r+1)]
+            ist_schnellster_weg=False
         else:
             besuchte_koordinaten.append(i)
         r+=1
-    print(besuchte_koordinaten)
-    print(koordinaten)
-    x, y = zip(*besuchte_koordinaten)
-    plt.scatter(x,y)
-    plt.plot(0,0, "ro")
-    plt.plot(kx,ky, "go")
-    plt.show()
-    x, y = zip(*koordinaten)
-    plt.scatter(x,y)
-    plt.plot(0,0, "ro")
-    plt.plot(kx,ky, "go")
-    plt.show()
+        
 geht_schneller_zurück(string)
-
-
-"""
-    x, y = zip(*koordinaten)
-    plt.scatter(x,y)
-    plt.plot(0,0, "ro")
-    plt.plot(kx,ky,"go")
-    print(koordinaten)
-    plt.show()
-"""
 
         
 
