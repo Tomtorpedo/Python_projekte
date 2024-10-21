@@ -23,7 +23,7 @@ print(output)
 #aufgabe 5
 #wenn man die anweisungen als vektoren aufschreibt sieht man, dass man häufiger am selben punkt borbei kommt, man könnte also abkürzen
 
-#aufgabe 6
+#aufgabe 6+
 string="v>v^>>vv^><>^v>"
 #string=input()
 
@@ -81,33 +81,25 @@ def geht_schneller_zurück(string):
     
     vektoren_zurück.reverse() #die reihenfolge wird umgekehrt, um den rückweg zu bekommen
     
-    rückweg=[]
+    rückweg=""
     for i in vektoren_zurück:                  #für jeden vektor wird ein zeichen erstellt
         if i==(0,1):
-            rückweg.append("^")
+            rückweg+="^"
         elif i==(1,0):
-            rückweg.append(">")
+            rückweg+=">"
         elif i==(0,-1):
-            rückweg.append("v")
+            rückweg+="v"
         elif i==(-1,0):
-            rückweg.append("<")
+            rückweg+="<"
     print(rückweg)
 
-
+#der algorithmus wählt nicht immer den kürzesten weg.
+#er entfernt nur "unnötige" teile des weges, also schlaufen im weg
+#sollte der weg einmal gerade vom start zum ziel gehen, dann wieder zurück um dann einen umwge zu ziel zu gehen
+#(start-> ziel -> zurück zum start -> umweg zum ziel)
+#dann wird nur der umweg genommen und der dierekte weg als schlaufe gewertet und dadurch gelöscht
+#durch die geringe komplexität des programms im vergleich zu einem pathfinding algorithmus, der den besten weg findet
+#kommteine änderung des programms nicht in frage.
     
 
 geht_schneller_zurück(string)
-
-        
-
-       
-
-
-"""
-    for i in range(len(chars)+1):
-        if koordinaten.count(koordinaten_x[i])>1 and koordinaten_y.count(koordinaten_y[i])>1:
-            #print("sie sind schonmal an den koordinaten", koordinaten_x[i],"|",koordinaten_y[i],"gewesen.")
-            is_shortest_path=False
-    return(not is_shortest_path)
-print(geht_schneller_zurück(string))
-"""
