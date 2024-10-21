@@ -67,7 +67,35 @@ def geht_schneller_zurück(string):
         else:
             besuchte_koordinaten.append(i)
         r+=1
-        
+    vektoren_zurück=[]
+    lx=0
+    ly=0
+    kpx=0
+    kpy=0
+    for i in besuchte_koordinaten:          #der vorherige code zum einpflegen der vektoren wird nun umgekehrt
+        lx=i[0]-kpx
+        ly=i[1]-kpy
+        kpx=i[0]
+        kpy=i[1]
+        vektoren_zurück.append((lx,ly))
+    
+    vektoren_zurück.reverse() #die reihenfolge wird umgekehrt, um den rückweg zu bekommen
+    
+    rückweg=[]
+    for i in vektoren_zurück:                  #für jeden vektor wird ein zeichen erstellt
+        if i==(0,1):
+            rückweg.append("^")
+        elif i==(1,0):
+            rückweg.append(">")
+        elif i==(0,-1):
+            rückweg.append("v")
+        elif i==(-1,0):
+            rückweg.append("<")
+    print(rückweg)
+
+
+    
+
 geht_schneller_zurück(string)
 
         
