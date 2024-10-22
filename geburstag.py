@@ -81,6 +81,7 @@ for i in geburtstage:
 print(r)
 """
 #aufgabe 6
+"""
 monat=[]
 max=0
 for i in geburtstage:
@@ -90,3 +91,17 @@ for l in monat:
         max = monat.count(l)
         max_monat=l
 print("der",max_monat,". monat kommt",max,"-mal vor.")
+"""
+
+#aufgabe 7
+"""
+schaltjahre=0
+for i in geburtstage:
+    if i[2]%4==0 and (i[2]%100!=0 or i[2]%400==0):
+        schaltjahre+=1
+print(schaltjahre)
+"""
+
+#aufgabe 8
+for i in range(len(geburtstage)):
+    
