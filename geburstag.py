@@ -1,3 +1,4 @@
+
 geburtstage = [
     [3, 2, 1980], [8, 8, 2003], [2, 4, 2001], [26, 5, 1983], [26, 1, 1995], [21, 2, 2019], [17, 3, 2004],
     [22, 11, 2002], [18, 12, 2013], [18, 2, 2020], [3, 12, 2014], [2, 1, 2021], [28, 1, 1990], [8, 8, 1987],
@@ -103,5 +104,6 @@ print(schaltjahre)
 """
 
 #aufgabe 8
-for i in range(len(geburtstage)):
-    
+zwei_haben_geburtstag=False
+
+print(Counter(geburtstage)[1])
