@@ -34,7 +34,7 @@ aufzeichnungen = [
 #print("Sie haben",len(aufzeichnungen),"Aufzeichnungen.")
 
 #Aufgabe 2
-
+"""
 stockwerk = 0
 for i in aufzeichnungen:
     stockwerk = stockwerk + i
