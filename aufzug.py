@@ -123,16 +123,22 @@ else:
     print(nmax_travel)
 """
 #Aufgabe 10
-"""
-stockwerk,stock,max_stop = 0,[],[]
+
+stockwerk,stock_liste,anzahl_stop = 0,[],[]
 for i in aufzeichnungen:
     stockwerk += i
-    stock.append(stockwerk) #in der liste "stock" sind alle besuchten stockwerke aufgeführt
-for l in stock:
-    max_stop.append(stock.count(l)) #in der liste "max_stop" ist aufgeführt, wie oft sie da waren
-print("der meist besuchte Stock ist:",stock[max_stop.index(max(max_stop))]) #der code an dieser stelle ist trivial und erfordert keine weitere erklärung
-print("Sie waren dort",max(max_stop),"-mal")
-"""
+    stock_liste.append(stockwerk) #in der liste "stock_liste" sind alle besuchten stockwerke aufgeführt
+for l in stock_liste:
+    anzahl_stop.append(stock_liste.count(l))    #in der liste "anzahl_stop" ist aufgeführt, wie oft sie da waren
+meist_gehalten=max(anzahl_stop)                 #meist gehalten ist der höchste wert in der liste anzahl stop
+goldenes_stockwerk=stock_liste[anzahl_stop.index(meist_gehalten)]    
+# als "goldenes_stockwerk" wird hier das stockwerk mit den meisten halten bezeichnet
+# dadurch, dass beide listen quasi parallel verlaufen ist der index des meisten stops gleich mit dem stockwerk des meisten stops
+
+# Erklärung siehe modellbild
+
+print("der meist besuchte Stock ist:",goldenes_stockwerk) #
+print("Sie waren dort",max(anzahl_stop),"-mal")
 #Aufgabe 11
 """
 stockwerk = 0
@@ -147,12 +153,12 @@ print("sie haben ",r,"-mal das stockwerk geändert")
 """
 #Aufgabe 12
 """
-stockwerk,stock,nicht_gehalten = 0,[],0
+stockwerk,stock_liste,nicht_gehalten = 0,[],0
 for i in aufzeichnungen:
     stockwerk += i
-    stock.append(stockwerk)
-for l in range((min(stock)),(max(stock))):
-    if stock.count(l)==0:
+    stock_liste.append(stockwerk)
+for l in range((min(stock_liste)),(max(stock_liste))):
+    if stock_liste.count(l)==0:
         nicht_gehalten+=1
 print(nicht_gehalten,"-mal wurde ein Stockwerk übersprungen")
 """

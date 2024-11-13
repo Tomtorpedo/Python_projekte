@@ -36,9 +36,20 @@ while eingabe==True:
         break
     anzahl = input("Bestimme die Anzahl der hinzuzufügenden Gegenstände:\n")
     warenkorb.append(produkt_preise[int(items)-1][0])
-    gesamtpreis = gesamtpreis + (int(anzahl)*float(produkt_preise[int(items)-1][1]))
+    item_preis=(int(anzahl)*float(produkt_preise[int(items)-1][1]))
+    gesamtpreis = gesamtpreis + item_preis
+    angebot(items)
     print("In Ihrem Warenkorb sind folgende dinge:")
     for j in warenkorb:
         print(j)
     print("\nDer Gesamtpreis beträgt",gesamtpreis,"€.")
-    gddfhzs=input()
+
+streu=0
+
+def angebot(produkt)        #das produkt wird auf angebote abgesucht
+    match produkt:
+        case "3" if int(anzahl/3)>=1:            #nur bei mindestens drei produkten ist ein rabatt verfügbar
+            item_preis=int(anzahl/3)*(item_preis*(5/6))+((anzahl%3)*item_preis)     #auf jedes dritte produkt gibt es 50% rabbat => man muss für je drei produkte nur 5/6 bezahlen
+        case "1":
+            streu+=5
+            if streu
