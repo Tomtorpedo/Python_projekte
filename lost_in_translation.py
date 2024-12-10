@@ -2,6 +2,27 @@ from random import *
 import json
 import os.path
 
+def idiot_am_werk(wort):
+    matching=0
+    best_match=""
+    #vorschläge machen:
+    for i in de_en:
+        running=0
+        for char in wort:
+            running+=i.count(char)
+        if running>matching:
+            matching=running
+            best_match=i         
+    print(f"{wort} konnte nicht gefunden werden.\nmeinten sie:  {best_match} [Y/n]")
+    fehler_einsehen=input()
+    if fehler_einsehen.lower()=="n":
+        print("tja pech gehabt...")
+        quit()
+    else:
+        return best_match
+
+
+
 rand=randint(1,100)
 de_en ={"tisch":"table",
         "tasse":"mug",
@@ -24,18 +45,17 @@ eingabe=input("wort:")
 #    if englisch==eingabe:
 #        print(f"{englisch}:{deutsch}")
 #        quit()
-if eingabe not in de_en and rand > 15:
-    print("dieses wort existiert nicht. :(")
-elif eingabe not in de_en and rand <= 15:
-    print("Das Wort existiert nicht, du Idiot!")
-else:
-    print(f"{eingabe}:{de_en[eingabe]}")
+
+
+#wenn nicht existiert:
+if eingabe not in de_en:
+    eingabe=idiot_am_werk(eingabe)
+print(f"{eingabe}:{de_en[eingabe]}")
 change=input("wollen sie die übersetzung ändern/hinzufügen?[y/N]")
-if change == "y":
-    änderung=input("neue definition:")
+if change.lower() == "y":
+    änderung=input("neue übersetzung:")
     de_en[eingabe]=änderung
 
-print(de_en)
 
 wörterbuch_json=json.dumps(de_en)
 #datei schreiben
