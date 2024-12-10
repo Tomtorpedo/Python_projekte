@@ -1,4 +1,3 @@
-from random import *
 import json
 import os.path
 
@@ -23,7 +22,6 @@ def idiot_am_werk(wort):
 
 
 
-rand=randint(1,100)
 de_en ={"tisch":"table",
         "tasse":"mug",
         "flasche":"bottle",
@@ -39,12 +37,13 @@ speicherdatei="wörterbuch.json"
 if os.path.isfile(speicherdatei):
     f=open(speicherdatei,"r",encoding="utf-8")
     de_en=json.loads(f.read())
+    f.close
 
 eingabe=input("wort:")
-#for deutsch,englisch in de_en.items():
-#    if englisch==eingabe:
-#        print(f"{englisch}:{deutsch}")
-#        quit()
+for deutsch,englisch in de_en.items():
+    if englisch==eingabe:
+        print(f"Sie haben ein englisches wort eingegeben.\ndie Übersetzung lautet:{englisch}:{deutsch}")
+        quit()
 
 
 #wenn nicht existiert:
