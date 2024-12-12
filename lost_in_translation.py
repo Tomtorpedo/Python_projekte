@@ -15,8 +15,15 @@ def idiot_am_werk(wort):
     print(f"{wort} konnte nicht gefunden werden.\nmeinten sie:  {best_match} [Y/n]")
     fehler_einsehen=input()
     if fehler_einsehen.lower()=="n":
-        print("tja pech gehabt...")
-        quit()
+        neu=input("möchten sie ihren Fehler einsehen?")
+        if neu.lower()=="n":
+            print("taj pech gehabt...")
+            quit()
+        else:
+            übersetzung=input(f"übersetzung für {wort}:")
+            de_en[wort]=übersetzung
+            neues_wort=True
+            return wort
     else:
         return best_match
 
@@ -38,7 +45,7 @@ if os.path.isfile(speicherdatei):
     f=open(speicherdatei,"r",encoding="utf-8")
     de_en=json.loads(f.read())
     f.close
-
+neues_wort=False
 eingabe=input("wort:")
 for deutsch,englisch in de_en.items():
     if englisch==eingabe:
