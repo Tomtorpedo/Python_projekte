@@ -33,7 +33,7 @@ de_en ={"tisch":"table",
         "diese":"these",
         "nüsse":"nuts"}
 #datei lesen, falls existiert
-speicherdatei="wörterbuch.json"
+speicherdatei="woerterbuch.json"
 if os.path.isfile(speicherdatei):
     f=open(speicherdatei,"r",encoding="utf-8")
     de_en=json.loads(f.read())
