@@ -15,7 +15,7 @@ def idiot_am_werk(wort):
     print(f"{wort} konnte nicht gefunden werden.\nmeinten sie:  {best_match} [Y/n]")
     fehler_einsehen=input()
     if fehler_einsehen.lower()=="n":
-        neu=input("möchten sie ihren Fehler einsehen?")
+        neu=input("möchten sie ein neues Wort hinzufügen?[Y/n]")
         if neu.lower()=="n":
             print("taj pech gehabt...")
             quit()
