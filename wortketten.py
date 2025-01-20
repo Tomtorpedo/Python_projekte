@@ -14,19 +14,40 @@ def teste_kette(wortliste):
     return True
 
 def mache_kette(wortliste):
-    neue_liste=[]
-    neue_liste.append(wortliste[0])
-    wortliste.pop(0)
-    while  len(wortliste)>0:
-        länge=len(wortliste)
-        for i in wortliste:
-            if i[0]==neue_liste[len(neue_liste)-1][-1]:
-                neue_liste.append(i)
-                wortliste.remove(i)
-                break
-        if len(wortliste)==länge:
-            return neue_liste
-    return neue_liste
+    lösungen=[]
+    for r in wortliste:
+        wörter=wortliste
+        neue_liste=[]
+        neue_liste.append(r)
+        wörter.pop(0)
+        länge=len(wörter)
+        while  len(wörter)>0 and len(wörter)<länge:
+            länge=len(wörter)
+            for i in wörter:
+                if i[0]==neue_liste[len(neue_liste)-1][-1]:
+                    neue_liste.append(i)
+                    wörter.remove(i)
+                    break
+        print(neue_liste)
+        lösungen.append(neue_liste)
+    return lösungen
 
-print(mache_kette(kette3))
+def kette_möglich(wortliste):
+    for i in wortliste:
+        i.anfang=wortliste.count(i[0])
+def to_graph(wortliste):
+    graph={}
+    for i in wortliste:
+        anfang=i[0]
+        ende=i[-1]
+        if anfang not in graph:
+            graph[anfang]=[]
+        if ende not in graph:
+            graph[ende]=[]
+        graph[anfang].append(ende)
+        graph[ende].append(anfang)
+    return graph
+graph=to_graph(kette3)
+print(graph)
+
 
