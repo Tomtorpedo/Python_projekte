@@ -1,6 +1,10 @@
 import time
-import toolbox
 import random
+import sys
+
+sys.setrecursionlimit(10000)
+
+
 class liste:
     def __init__(self):
         self.werte=[]
@@ -11,11 +15,31 @@ class liste:
             self.werte.append(i)
         return self.werte
 
+class analyse:
+    def __init__(self):
+        self.analyse=[]
+    def hinzufügen(self,zeit:int):
+        self.analyse.append(zeit)
+    def durchschnitt(self):
+        durchschnitt=0
+        for i in self.analyse:
+            durchschnitt+=i
+        return durchschnitt/len(self.analyse)
+    def zahlen(self):
+        return self.analyse
+
+def timer(funktion,input1,input2)->int:
+    start=time.perf_counter_ns()
+    funktion(input1,input2)
+    stop=time.perf_counter_ns()
+    return(stop-start)
+
 def suche_1(x,liste)->bool:
     for wort in liste:
         if wort==x:
             return True
     return False
+
 
 def suche_2(x,liste)->bool:
     status=False
@@ -24,26 +48,78 @@ def suche_2(x,liste)->bool:
             status=True
     return status
 
+def suche_3(x,liste):
+    if len(liste) == 0:
+        return False
+    elif liste[0] == x:
+        return True
+    else:
+        return suche_3(x, liste[1:])
 
-analyse1=[]
-analyse2=[]
+def suche_4(x,liste):
+    if len(liste) == 0:
+        return False
+    elif liste[-1] == x:
+        return True
+    else:
+        return suche_4(x, liste[:-1])
+
+def suche_5(x,liste):
+    if len(liste) == 0:
+        return False
+    elif liste[-1] == x:
+        return True
+    else:
+        mid=len(liste)//2
+        in_links = suche_5(x, liste[:mid])
+        in_rechts = suche_5(x, liste[mid+1:])
+        return in_links or in_rechts
+
+
+analyse1 = analyse()
+analyse2 = analyse()
+analyse3 = analyse()
+analyse4 = analyse()
+analyse5 = analyse()
 l1=liste()
-for i in range(5000):
-    zahl=random.randrange(0,10000)
-    zeit1=toolbox.timer(suche_1,zahl,l1.liste(10000))
-    zeit2=toolbox.timer(suche_2,zahl,l1.liste(10000))
-    analyse1.append(zeit1)
-    analyse2.append(zeit2)
-durchschnitt=0
-for i in analyse1:
-    durchschnitt+=i
-durchschnitt=durchschnitt/len(analyse1)
 
-durchschnitt1=0
-for i in analyse2:
-    durchschnitt1+=i
-durchschnitt1=durchschnitt1/len(analyse2)
-print(durchschnitt,"|",durchschnitt1,"|",durchschnitt1/durchschnitt)
+versuche=500
+größe=9999
+werte=[]
+
+for i in range(versuche):
+    zahl=random.randrange(0,größe)
+    werte.append(zahl)
+    zeit1=timer(suche_1,zahl,l1.liste(größe))
+    zeit2=timer(suche_2,zahl,l1.liste(größe))
+    zeit3=timer(suche_3,zahl,l1.liste(größe))
+    zeit4=timer(suche_4,zahl,l1.liste(größe))
+    zeit5=timer(suche_5,zahl,l1.liste(größe))
+    analyse1.hinzufügen(zeit1)
+    analyse2.hinzufügen(zeit2)
+    analyse3.hinzufügen(zeit3)
+    analyse4.hinzufügen(zeit4)
+    analyse5.hinzufügen(zeit5)
+durchschnitt1=analyse1.durchschnitt()
+durchschnitt2=analyse2.durchschnitt()
+durchschnitt3=analyse3.durchschnitt()
+durchschnitt4=analyse4.durchschnitt()
+durchschnitt5=analyse5.durchschnitt()
 
 
+print("iterativ ",durchschnitt1,"\n konstant ",durchschnitt1,"\n rekursiv von vorne "
+    ,durchschnitt3,"\n rekursiv von hinten",durchschnitt4,"\n rekursiv halbiert",durchschnitt5)
 
+import matplotlib.pyplot as plt
+
+plt.scatter(werte,analyse1.zahlen(),color="r")
+plt.scatter(werte,analyse2.zahlen(),color="b")
+plt.scatter(werte,analyse3.zahlen(),color="g")
+plt.scatter(werte,analyse4.zahlen(),color="y")
+plt.scatter(werte,analyse5.zahlen(),color="c")
+plt.legend(["iterativ","konstant","rekursiv von vorne","rekursiv von hinten","rekursiv halbiert"])
+plt.yscale("log")
+plt.grid(True)
+plt.xlabel("Algorithmen")
+plt.ylabel("Zeit")
+plt.show()
