@@ -95,21 +95,20 @@ for i in range(versuche):
     zeit3=timer(suche_3,zahl,l1.liste(größe))
     zeit4=timer(suche_4,zahl,l1.liste(größe))
     zeit5=timer(suche_5,zahl,l1.liste(größe))
+
     analyse1.hinzufügen(zeit1)
     analyse2.hinzufügen(zeit2)
     analyse3.hinzufügen(zeit3)
     analyse4.hinzufügen(zeit4)
     analyse5.hinzufügen(zeit5)
+
 durchschnitt1=analyse1.durchschnitt()
 durchschnitt2=analyse2.durchschnitt()
 durchschnitt3=analyse3.durchschnitt()
 durchschnitt4=analyse4.durchschnitt()
 durchschnitt5=analyse5.durchschnitt()
 
-
-print("iterativ ",durchschnitt1,"\n konstant ",durchschnitt1,"\n rekursiv von vorne "
-    ,durchschnitt3,"\n rekursiv von hinten",durchschnitt4,"\n rekursiv halbiert",durchschnitt5)
-
+print("iterativ ",durchschnitt1,"\n konstant ",durchschnitt1,"\n rekursiv von vorne ",durchschnitt3,"\n rekursiv von hinten",durchschnitt4,"\n rekursiv halbiert",durchschnitt5)
 import matplotlib.pyplot as plt
 
 plt.scatter(werte,analyse1.zahlen(),color="r")
