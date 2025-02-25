@@ -1,5 +1,5 @@
 a:list=[1,3,4,7,19]
-b:list=[2,3,5,6]
+b:list=[2,3,5,6,10,21]
 
 def merge(a:list, b:list)->list:
     """
@@ -21,6 +21,8 @@ def merge(a:list, b:list)->list:
         else:                        #wenn b durch ist, werden die restlichen einträge von a in c eingefügt
             c.append(a[ia])
             ia+=1
+    if ib<len(b):                   #wenn a durch ist, werden die restlichen einträge von b in c eingefügt
+        c.extend(b[ib:])
     return c
 
 
