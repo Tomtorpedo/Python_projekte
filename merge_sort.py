@@ -1,10 +1,6 @@
-a=[1,3,4,7,19]
-b=[2,3,5,6,10,21]
-
 def merge(a:list, b:list)->list:
     """
-    Zwei sortierte listen werden sortiert vereinigt. \n
-    Die Funktion geht a durch und schaut für jedes Element ob es kleiner als das aktuelle Element von b ist"""
+    Zwei sortierte listen werden sortiert vereinigt."""
     
     #variablen werden initialisiert
     c=[]
@@ -25,5 +21,8 @@ def merge(a:list, b:list)->list:
         c.extend(b[ib:])
     return c
 
+
+a=[1,3,4,7,19]
+b=[2,3,5,6,10,21]
 
 print(merge(a,b))
