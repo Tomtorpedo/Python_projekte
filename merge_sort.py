@@ -1,5 +1,5 @@
-a:list=[1,3,4,7,19]
-b:list=[2,3,5,6,10,21]
+a=[1,3,4,7,19]
+b=[2,3,5,6,10,21]
 
 def merge(a:list, b:list)->list:
     """
@@ -7,7 +7,7 @@ def merge(a:list, b:list)->list:
     Die Funktion geht a durch und schaut für jedes Element ob es kleiner als das aktuelle Element von b ist"""
     
     #variablen werden initialisiert
-    c:list=[]
+    c=[]
     ia=0 #iterator a
     ib=0 #iterator b
     
