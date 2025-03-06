@@ -1,3 +1,10 @@
+"""Modul mit verschiedensten nützlichen Funktionen\n
+### Funktionen:
+    - timer - misst die Zeit einer Funktion
+    - list_gen - generiert eine Liste
+    - is_sorted - checkt, ob eine Liste sortiert ist
+"""
+
 if __name__=="__main__":
     print("test")
 

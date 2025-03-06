@@ -19,5 +19,5 @@ def funktion(liste):
     quokka = liste[:vor_stelle] + liste[vor_stelle+1:nach_stelle] + liste[nach_stelle+1:]     #größter und kleinster wert werden aussortiert
     dachs = funktion(quokka) 
     return dachs
-list=[4, 7, 2, 9, 5, 8, 3, 6]
-funktion(list)
+list=[]
+print(funktion(list))
