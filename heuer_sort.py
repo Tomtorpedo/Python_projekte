@@ -18,7 +18,7 @@ def heuer_sort(liste:list)->list:
         liste=heuer_sort(liste)
         return liste
 
-liste=tbox.list_gen(500)
+liste=[1,3,2,5,4]
 
 
 print(f"{heuer_sort(liste)}")
