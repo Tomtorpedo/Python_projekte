@@ -1,7 +1,7 @@
 import time
 import random
 import sys
-import toolbox
+from toolbox import timer
 
 sys.setrecursionlimit(10000)
 
@@ -30,7 +30,7 @@ class analyse:
         return self.analyse
 
 #####################################################################
-#wurde durch toolbox.timer ersetzt 
+#wurde durch toolbox.timer import am anfang ersetzt 
 '''
 def timer(funktion,input1,input2)->int:
     start=time.perf_counter_ns()
@@ -97,11 +97,11 @@ werte=[]
 for i in range(versuche):
     zahl=random.randrange(0,größe)
     werte.append(zahl)
-    zeit1=toolbox.timer(suche_1,zahl,l1.liste(größe))
-    zeit2=toolbox.timer(suche_2,zahl,l1.liste(größe))
-    zeit3=toolbox.timer(suche_3,zahl,l1.liste(größe))
-    zeit4=toolbox.timer(suche_4,zahl,l1.liste(größe))
-    zeit5=toolbox.timer(suche_5,zahl,l1.liste(größe))
+    zeit1=timer(suche_1,zahl,l1.liste(größe))
+    zeit2=timer(suche_2,zahl,l1.liste(größe))
+    zeit3=timer(suche_3,zahl,l1.liste(größe))
+    zeit4=timer(suche_4,zahl,l1.liste(größe))
+    zeit5=timer(suche_5,zahl,l1.liste(größe))
 
     analyse1.hinzufügen(zeit1)
     analyse2.hinzufügen(zeit2)
