@@ -1,6 +1,7 @@
 import time
 import random
 import sys
+import toolbox
 
 sys.setrecursionlimit(10000)
 
@@ -28,11 +29,16 @@ class analyse:
     def zahlen(self):
         return self.analyse
 
+#####################################################################
+#wurde durch toolbox.timer ersetzt 
+'''
 def timer(funktion,input1,input2)->int:
     start=time.perf_counter_ns()
     funktion(input1,input2)
     stop=time.perf_counter_ns()
     return(stop-start)
+'''
+#####################################################################
 
 def suche_1(x,liste)->bool:
     for wort in liste:
@@ -75,6 +81,7 @@ def suche_5(x,liste):
         in_rechts = suche_5(x, liste[mid+1:])
         return in_links or in_rechts
 
+#####################################################################
 
 analyse1 = analyse()
 analyse2 = analyse()
@@ -83,18 +90,18 @@ analyse4 = analyse()
 analyse5 = analyse()
 l1=liste()
 
-versuche=500
-größe=9999
+versuche=200
+größe=5000
 werte=[]
 
 for i in range(versuche):
     zahl=random.randrange(0,größe)
     werte.append(zahl)
-    zeit1=timer(suche_1,zahl,l1.liste(größe))
-    zeit2=timer(suche_2,zahl,l1.liste(größe))
-    zeit3=timer(suche_3,zahl,l1.liste(größe))
-    zeit4=timer(suche_4,zahl,l1.liste(größe))
-    zeit5=timer(suche_5,zahl,l1.liste(größe))
+    zeit1=toolbox.timer(suche_1,zahl,l1.liste(größe))
+    zeit2=toolbox.timer(suche_2,zahl,l1.liste(größe))
+    zeit3=toolbox.timer(suche_3,zahl,l1.liste(größe))
+    zeit4=toolbox.timer(suche_4,zahl,l1.liste(größe))
+    zeit5=toolbox.timer(suche_5,zahl,l1.liste(größe))
 
     analyse1.hinzufügen(zeit1)
     analyse2.hinzufügen(zeit2)
@@ -108,7 +115,7 @@ durchschnitt3=analyse3.durchschnitt()
 durchschnitt4=analyse4.durchschnitt()
 durchschnitt5=analyse5.durchschnitt()
 
-print("iterativ ",durchschnitt1,"\n konstant ",durchschnitt1,"\n rekursiv von vorne ",durchschnitt3,"\n rekursiv von hinten",durchschnitt4,"\n rekursiv halbiert",durchschnitt5)
+print("Zeiten in µs:\n","iterativ ",durchschnitt1,"\n konstant ",durchschnitt1,"\n rekursiv von vorne ",durchschnitt3,"\n rekursiv von hinten",durchschnitt4,"\n rekursiv halbiert",durchschnitt5)
 import matplotlib.pyplot as plt
 
 plt.scatter(werte,analyse1.zahlen(),color="r")
@@ -120,5 +127,5 @@ plt.legend(["iterativ","konstant","rekursiv von vorne","rekursiv von hinten","re
 plt.yscale("log")
 plt.grid(True)
 plt.xlabel("Algorithmen")
-plt.ylabel("Zeit")
+plt.ylabel("Zeit in µs")
 plt.show()
