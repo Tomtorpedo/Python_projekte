@@ -1,3 +1,14 @@
+def hat_tage(monat:int, sj=False)->int:
+    match monat:
+        case 1 | 3 | 5 | 7 | 8 | 10 | 12:
+            return 31
+        case 4|6|9|11:
+            return 30
+        case 2:
+            if sj==False:
+                return 28
+            else:
+                return 29
 
 geburtstage = [
     [3, 2, 1980], [8, 8, 2003], [2, 4, 2001], [26, 5, 1983], [26, 1, 1995], [21, 2, 2019], [17, 3, 2004],
@@ -104,6 +115,152 @@ print(schaltjahre)
 """
 
 #aufgabe 8
-zwei_haben_geburtstag=False
+"""
+def zwei_haben_geb(geburtstage):
+    tag_monat=[]
+    for i in geburtstage:
+        print(i[:2])
+        tag_monat.append(i[:2])
 
-print(Counter(geburtstage)[1])
+    for i in tag_monat:
+        if tag_monat.count(i)>1:
+            return True
+    return False
+    
+print(zwei_haben_geb(geburtstage))
+"""
+
+#aufgabe 9
+"""
+summe=[]
+for i in geburtstage:
+    summe.append((i[0]+i[1]+i[2]))
+max_geb=geburtstage[summe.index(max(summe))]
+print(max_geb)
+"""
+
+#aufgabe 10
+"""
+tag=[]
+monat=[]
+tag2=[]
+for i in geburtstage:
+    if i[2]==2000:
+        tag.append(i[0])
+        monat.append(i[1])
+for i in range(len(monat)):
+    if (monat[i]==min(monat)):
+        tag2.append(tag[i])
+print("min geb ist", min(tag2),", ",min(monat),", 2000")
+"""
+
+#aufgabe 11
+"""
+nach_mauer=[]
+for i in geburtstage:
+    if (i[2]>1989):
+        nach_mauer.append(i)
+    if (i[2]==1989 and i[1]>11):
+        nach_mauer.append(i)
+    if (i[2]==1989 and i[1]==11 and i[0]>9):
+        nach_mauer.append(i)
+print(len(nach_mauer))
+"""
+
+#aufgabe12
+"""
+nach_mauer=[]
+for i in geburtstage:
+    if (i[2]>1989 and i[2]<2000):
+        nach_mauer.append(i)
+    if (i[2]==1989 and i[1]>11 and i[2]<2000):
+        nach_mauer.append(i)
+    if (i[2]==1989 and i[1]==11 and i[0]>9 and i[2]<2000):
+        nach_mauer.append(i)
+print(len(nach_mauer))
+"""
+
+#aufgabe 13
+"""
+for i in geburtstage:
+    if (i[0]>31 or i[1]>12):
+        print("gefunden")
+"""
+
+#aufgabe 14
+"""
+alt_tage=[]
+alt_tage1=[]
+alt_monate=[]
+jahre=[]
+for i in geburtstage:
+    jahre.append(i[2])
+
+for i in range(len(geburtstage)):
+    if(jahre[i]==min(jahre)):
+        alt_monate.append(geburtstage[i][1])
+        alt_tage.append(geburtstage[i][0])
+
+for i in range(len(alt_monate)):
+    if(alt_monate[i]==min(alt_monate)):
+        alt_tage1.append(alt_tage[i])
+
+jung_tage=[]
+jung_tage1=[]
+jung_monate=[]
+
+for i in range(len(geburtstage)):
+    if(jahre[i]==max(jahre)):
+        jung_monate.append(geburtstage[i][1])
+        jung_tage.append(geburtstage[i][0])
+
+for i in range(len(jung_monate)):
+    if(jung_monate[i]==max(jung_monate)):
+        jung_tage1.append(jung_tage[i])
+
+
+print("ältester:", min(alt_tage1),",",min(alt_monate),",",min(jahre))
+print("jüngster:", max(jung_tage1),",",max(jung_monate),",",max(jahre))
+"""
+
+#aufgabe 15
+
+
+"""
+for i in geburtstage:
+    if ([(i[0]-1),i[1],i[2]] in geburtstage) or ([(i[0]+1),i[1],i[2]] in geburtstage):
+        print(i)
+    elif i[0]==1 and ([hat_tage(i[1]-1),(i[1]-1),i[2]] in geburtstage):
+        print(i)
+    elif i[0]==hat_tage(i[1]) and ([1,i[1]+1,i[2]] in geburtstage):
+        print(i)
+"""
+
+#aufgabe 16
+"""
+def zu_tage(datum:tuple)->int:
+    tage,monate,jahre=datum
+    for i in range (1,monate):
+        if jahre%4==0 and (jahre%100!=0 or jahre%400==0):
+            tage+=hat_tage(i,sj=True)
+        else:
+            tage+=hat_tage(i)
+    for i in range (0,jahre):
+        if i%4==0 and (i%100!=0 or i%400==0):
+            tage+=366
+        else:
+            tage+=365
+    return tage
+
+tage_liste=[]
+for i in geburtstage:
+    tage_liste.append(zu_tage(i))
+
+for i in range(len(tage_liste)):
+    if (tage_liste[i]+100) in tage_liste:
+        geb_100=geburtstage[tage_liste.index(tage_liste[i]+100)]
+        print(geburtstage[i],":",geb_100)
+    elif (tage_liste[i]-100) in tage_liste:
+        geb_100=geburtstage[tage_liste.index(tage_liste[i]-100)]
+        print(geburtstage[i],":",geb_100)
+"""

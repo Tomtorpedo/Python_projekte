@@ -9,6 +9,7 @@ def fibonacci(n):
     else:
         return 1
     
+
 def fibonacci2(n):
     erg=[1,1]
     for i in range(2,n+1):
@@ -19,8 +20,8 @@ def fibonacci2(n):
 zahlen=[3,5,7,10,15,20,42,100]
 
 
-O_plotter(40,fibonacci,"blue")
-O_plotter(40,fibonacci2,"red")
+O_plotter(35,fibonacci,"blue")
+O_plotter(35,fibonacci2,"red")
 plt.show()
 
 """

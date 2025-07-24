@@ -3,5 +3,5 @@ def is_prime(zahl):
         if zahl%i==0:
             return False
     return True
-for f in range(2,10000000000):
+for f in range(2,100):
     print(f,"ist eine primzahl:", is_prime(f))
