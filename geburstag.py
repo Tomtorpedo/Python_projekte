@@ -241,7 +241,7 @@ for i in geburtstage:
 def zu_tage(datum:tuple)->int:
     tage,monate,jahre=datum
     for i in range (1,monate):
-        if jahre%4==0 and (jahre%100!=0 or jahre%400==0):
+        if jahre%4==0 and (jahre%100!=0 or jahre%400==0):   #Jahr 0 ist ein schaltjahr in diesem Fall
             tage+=hat_tage(i,sj=True)
         else:
             tage+=hat_tage(i)
